@@ -1,0 +1,89 @@
+#board .row .columns {
+    border: 1px solid #2199e8;
+    height: 100%;
+}
+
+#board, #board div {
+    height: 600px;
+}
+
+#board .row {
+    height: 33%;
+}
+
+#board .row .top {
+    border-top-width: 2px;
+}
+
+#board .row .left {
+    border-left-width: 2px;
+}
+
+#board .row .right {
+    border-right-width: 2px;
+}
+
+#board .row .bottom {
+    border-bottom-width: 2px;
+    margin-bottom: 2%;
+}
+
+#board .row div {
+    font-size: 100px;
+    text-align: center;
+    line-height: 200%;
+}
+
+.x {
+    color: #8545D5;
+}
+
+.x::after {
+    content: "✖";
+}
+
+.o {
+    color: #ffae00;
+    font-weight: bold;
+}
+
+.o::after {
+    content: "🌕";
+}
+
+.game-over.winning-square {
+    background-color: #3adb76;
+    opacity: .75;
+}
+
+.game-over {
+    background-color: #dddddd;
+    opacity: 0.5;
+}
+
+
+p{
+    color: slategray;
+    font-size: .95em;
+}
+
+.x-hover {
+    opacity: 0.5;
+    color: #8545D5;
+    cursor: pointer;
+}
+
+.x-hover::after {
+    content: "✖";
+}
+
+.o-hover {
+    opacity: 0.5;
+    color: #ffae00;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.o-hover::after {
+    content: "🌕";
+}

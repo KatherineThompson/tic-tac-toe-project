@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/6.1.2/foundation.css"/>
+    <link rel="stylesheet" href="./index.css"/>
+    <script src="http://code.jquery.com/jquery-2.2.1.js"></script>
+    <script src="./index.js"></script>
+</head>
+<body>
+    <div class="row">
+        <h1 class="text-center">Medium-Budget Tic-Tac-Toe</h1>
+    </div>
+    
+    <div class="row">
+        <h5 class="text-center">Player <span id="player-num">1</span>: <span id="message">Pick a square</span></h5>
+    </div>
+    
+    <div class="row">
+        <div class="small-11 small-centered medium-9 medium-centered large-6 columns large-centered">
+            <div class="row small-collapse">
+                <div class="small-4 large-5 columns text-left">
+                    <p>Games won by Player 1: <span id="player-one-wins">0</span></p>
+                </div>
+                <div class="small-4 large-2 columns text-center">
+                    <p>Tied games: <span id="tied-games">0</span></p>
+                </div>
+                <div class="small-4 large-5 columns end text-right">
+                    <p>Games won by Player 2: <span id="player-two-wins">0</span></p>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+    <div id="board" class="row">
+        <div class="small-11 small-centered medium-9 medium-centered large-12 columns">
+            <div class="row">
+                <div class="small-4 large-2 large-offset-3 columns top left" row="0" column="0"></div>
+                <div class="small-4 large-2 columns top" row="0" column="1"></div>
+                <div class="small-4 large-2 columns end top right" row="0" column="2"></div>
+            </div>
+            <div class="row">
+                <div class="small-4 large-2 large-offset-3 columns left" row="1" column="0"></div>
+                <div class="small-4 large-2 columns" row="1" column="1"></div>
+                <div class="small-4 large-2 columns end right" row="1" column="2"></div>
+            </div>
+            <div class="row">
+                <div class="small-4 large-2 large-offset-3 columns bottom left" row="2" column="0"></div>
+                <div class="small-4 large-2 columns bottom" row="2" column="1"></div>
+                <div class="small-4 large-2 columns end bottom right" row="2" column="2"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-offset-2 small-4 large-offset-3 large-3 columns">
+            <button id="reset-button" class="button expanded large alert">Reset board</button>
+        </div>
+        <div class="small-4 large-3 columns end">
+            <button id="lucky-button" class="button success expanded large">I'm feeling lucky</button>
+        </div>
+    </div>
+</body>    
+</html>
