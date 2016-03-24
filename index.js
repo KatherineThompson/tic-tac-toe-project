@@ -1,14 +1,13 @@
-'use strict';
-
+/* global window */
 (function($) {
-    
+    "use strict";
     const view = createView();
     const model = createModel();
     const controller = createController();
     
     $(function() {
         controller.init(view, model);
-    })
+    });
     
     /**
      * All DOM manipulation happens here.
@@ -21,7 +20,7 @@
         // Declare some functions
         let isFrozen = false;
         function onSquareClick(callback) {
-            $("#board .row div").on("click", function() {
+            $("#board .row div").on("click", function(event) {
                 const $clickedSquare = $(event.target);
                 if (isFrozen || $clickedSquare.hasClass("x") || $clickedSquare.hasClass("o")) {
                     return;
@@ -80,13 +79,15 @@
                     if (columnValue !== null) {
                         addMark(columnValue, rowIndex, columnIndex);
                     }
-                })
-            })
+                });
+            });
         }
         
         function addWinEffects(winningSquares) {
             winningSquares.forEach(function(square) {
-                const $square = $("#board div").filter("[row=" + square.row + "]").filter("[column=" + square.column +"]");
+                const $square = $("#board div")
+                    .filter("[row=" + square.row + "]")
+                    .filter("[column=" + square.column +"]");
                 $square.addClass("winning-square").animate({
                     "font-size": "125px",
                     "line-height": "150%"
@@ -96,7 +97,7 @@
                         "line-height": "200%"
                     }, 1000);
                 });
-            })
+            });
             
         }
         
@@ -112,7 +113,7 @@
         }
         
         function onSquareHover(callback) {  
-            $("#board .row div").hover(function() {
+            $("#board .row div").hover(function(event) {
                 const isPlayerOne = callback();
                 const $hoveredSquare = $(event.target);
                 if ($hoveredSquare.hasClass("x") || $hoveredSquare.hasClass("o")){
@@ -123,10 +124,10 @@
                 } else {
                     $hoveredSquare.addClass("o-hover");
                 }
-            }, function() {
+            }, function(event) {
                 const $hoveredSquare = $(event.target);
                 $hoveredSquare.removeClass("x-hover").removeClass("o-hover");
-            })
+            });
         }
         // Return those functions
         return {onSquareClick: onSquareClick,
@@ -142,7 +143,7 @@
                 onLuckyButtonClick: onLuckyButtonClick,
                 addEndState: addEndState,
                 onSquareHover: onSquareHover
-        }
+        };
     }
 
     /**
@@ -163,7 +164,7 @@
             playerOneWins: 0,
             playerTwoWins: 0,
             ties: 0
-        } 
+        }; 
         
         function initBoard() {
             flipCoin();
@@ -188,8 +189,8 @@
         }
         
         function loadGame() {
-            if (localStorage.gameState) {
-                gameState = JSON.parse(localStorage.gameState);
+            if (window.localStorage.gameState) {
+                gameState = JSON.parse(window.localStorage.gameState);
                 return true; 
             } else {
                 initBoard();
@@ -199,7 +200,7 @@
         }
         
         function saveGame() {
-            localStorage.gameState = JSON.stringify(gameState);
+            window.localStorage.gameState = JSON.stringify(gameState);
         }
         
         function resetGame() {
@@ -354,7 +355,7 @@
                 for (let colIndex = 0; colIndex < sideLength; colIndex++) {
                     if (gameState.board[rowIndex][colIndex] === null) {
                         openSpaces.push({row: rowIndex, column: colIndex});
-                    } else if (gameState.board[rowIndex][colIndex] === !isPlayerOne) {
+                    } else if (gameState.board[rowIndex][colIndex] === !isPlayerOne) { //jshint ignore:line
                         opposingPlayerSpaces = true;
                         break;
                     }
@@ -376,7 +377,7 @@
                 for (let rowIndex = 0; rowIndex < sideLength; rowIndex++) {
                     if (gameState.board[rowIndex][colIndex] === null) {
                         openSpaces.push({row: rowIndex, column: colIndex});
-                    } else if (gameState.board[rowIndex][colIndex] === !isPlayerOne) {
+                    } else if (gameState.board[rowIndex][colIndex] === !isPlayerOne) { //jshint ignore:line
                         opposingPlayerSpaces = true;
                         break;
                     }
@@ -398,7 +399,7 @@
                 
                 if (gameState.board[rowColIndex][rowColIndex] === null) {
                     openSpacesDiagonal.push({row: rowColIndex, column: rowColIndex});
-                } else if (gameState.board[rowColIndex][rowColIndex] === !isPlayerOne) {
+                } else if (gameState.board[rowColIndex][rowColIndex] === !isPlayerOne) { //jshint ignore:line
                     opposingPlayerSpacesDiagonal = true;
                     break;
                 }
@@ -418,7 +419,7 @@
             for (let rowIndex = 0; rowIndex < sideLength; rowIndex++) {
                 if (gameState.board[rowIndex][sideLength - 1 - rowIndex] === null) {
                     openSpacesReverseDiagonal.push({row: rowIndex, column: sideLength - 1 - rowIndex});
-                } else if (gameState.board[rowIndex][sideLength - 1 - rowIndex] === !isPlayerOne) {
+                } else if (gameState.board[rowIndex][sideLength - 1 - rowIndex] === !isPlayerOne) { //jshint ignore:line
                     opposingPlayerSpacesReverseDiagonal = true;
                     break;
                 }
@@ -479,7 +480,7 @@
                 getLastColumn: getLastColumn,
                 getTallies: getTallies,
                 getBestSpace: getBestSpace
-              }
+              };
     }
     
     function createController() {
