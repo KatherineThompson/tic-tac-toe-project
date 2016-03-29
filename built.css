@@ -1,4 +1,10 @@
 @charset "UTF-8";
+/**
+ * Foundation for Sites by ZURB
+ * Version 6.2.0
+ * foundation.zurb.com
+ * Licensed under MIT Open Source
+ */
 #board .row {
   height: 33%; }
   #board .row .columns {
