@@ -89,15 +89,7 @@
         function addWinEffects(winningSquares) {
             winningSquares.forEach(function (square) {
                 var $square = $("#board div").filter("[row=" + square.row + "]").filter("[column=" + square.column + "]");
-                $square.addClass("winning-square").animate({
-                    "font-size": "125px",
-                    "line-height": "150%"
-                }, 1000, function () {
-                    $square.animate({
-                        "font-size": "100px",
-                        "line-height": "200%"
-                    }, 1000);
-                });
+                $square.addClass("winning-square");
             });
         }
 

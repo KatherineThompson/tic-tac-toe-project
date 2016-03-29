@@ -1225,24 +1225,24 @@ h6 {
     line-height: 0; }
 
 h1 {
-  font-size: 1.5rem; }
+  font-size: 4.5rem; }
 
 h2 {
-  font-size: 1.25rem; }
+  font-size: 3.75rem; }
 
 h3 {
-  font-size: 1.1875rem; }
+  font-size: 2.90625rem; }
 
 h4 {
-  font-size: 1.125rem; }
+  font-size: 2.6875rem; }
 
 h5 {
-  font-size: 1.0625rem; }
+  font-size: 2.5rem; }
 
 h6 {
-  font-size: 1rem; }
+  font-size: 1.5rem; }
 
-@media screen and (min-width: 40em) {
+@media screen and (min-width: 64.0625em) {
   h1 {
     font-size: 3rem; }
   h2 {
@@ -3472,12 +3472,18 @@ table.hover tr:nth-of-type(even):hover {
     border-bottom-width: 2px;
     margin-bottom: 2%; }
   #board .row div {
-    font-size: 100px;
     text-align: center;
-    line-height: 200%; }
+    line-height: 200%;
+    font-size: 150px; }
+    @media screen and (min-width: 64.0625em) {
+      #board .row div {
+        font-size: 100px; } }
 
 #board, #board div {
-  height: 600px; }
+  height: 900px; }
+  @media screen and (min-width: 64.0625em) {
+    #board, #board div {
+      height: 600px; } }
 
 .x {
   color: #8545D5; }
@@ -3495,7 +3501,7 @@ table.hover tr:nth-of-type(even):hover {
   color: #ffae00;
   font-weight: bold; }
   .o::after {
-    content: "🌕"; }
+    content: "⭕"; }
 
 .o-hover {
   color: #ffae00;
@@ -3503,15 +3509,34 @@ table.hover tr:nth-of-type(even):hover {
   cursor: pointer;
   font-weight: bold; }
   .o-hover::after {
-    content: "🌕"; }
+    content: "⭕"; }
 
 .game-over {
   background-color: #dddddd;
   opacity: 0.5; }
   .game-over.winning-square {
     background-color: #3adb76;
-    opacity: .75; }
+    opacity: .75;
+    animation-duration: 3s;
+    animation-name: winningsquare; }
+
+@keyframes winningsquare {
+  50% {
+    font-size: 187.5px;
+    @media screen and (min-width: 64.0625em) {
+      font-size: 125px; } } }
 
 p {
-  color: slategray;
-  font-size: .95em; }
+  font-size: 2.5rem;
+  color: slategray; }
+  @media screen and (min-width: 64.0625em) {
+    p {
+      font-size: 1rem; } }
+
+.button.large {
+  font-size: 3.4375rem;
+  height: 200px; }
+  @media screen and (min-width: 64.0625em) {
+    .button.large {
+      font-size: 1.25rem;
+      height: inherit; } }

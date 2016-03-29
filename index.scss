@@ -1,13 +1,37 @@
 @import "foundation";
-$breakpoints: (
-    small: 0,
-    medium: 640px,
-    large: 1025px,
-    xlarge: 1200px,
-    xxlarge: 1440px
+
+$breakpoints: map-merge($breakpoints, (large: 1025px));
+
+// $breakpoints: (
+//     small: 0,
+//     medium: 640px,
+//     large: 1025px,
+//     xlarge: 1200px,
+//     xxlarge: 1440px,
+// );
+
+$header-sizes: (
+  small: (
+    'h1': 72,
+    'h2': 60,
+    'h3': 46.5,
+    'h4': 43,
+    'h5': 40,
+    'h6': 24,
+  ),
+  large: (
+    'h1': 48,
+    'h2': 40,
+    'h3': 31,
+    'h4': 25,
+    'h5': 20,
+    'h6': 16,
+  ),
 );
 
 @include foundation-everything;
+$default-symbol-size: 100px;
+$default-symbol-size-small: $default-symbol-size * 1.5;
 
 #board {
     
@@ -39,15 +63,30 @@ $breakpoints: (
         }
 
         div {
-            font-size: 100px;
             text-align: center;
             line-height: 200%;
+            @include breakpoint(small) {
+                font-size: $default-symbol-size-small;
+
+            }
+            
+            @include breakpoint(large) {
+                font-size: $default-symbol-size;
+            }
         }   
     }
     
     
     &, div {
-        height: 600px;
+        $default-height: 600px;
+                
+        @include breakpoint(small) {
+            height: $default-height * 1.5;
+        }
+        
+        @include breakpoint(large) {
+            height: $default-height;
+        }
     }    
 }
 
@@ -82,7 +121,7 @@ $breakpoints: (
 
 @include player-symbol-classes("x", #8545D5, "✖");
 
-@include player-symbol-classes("o", #ffae00, "🌕", true);
+@include player-symbol-classes("o", #ffae00, "⭕", true);
 
 .game-over {
     background-color: #dddddd;
@@ -90,10 +129,42 @@ $breakpoints: (
     &.winning-square {
         background-color: #3adb76;
         opacity: .75;
+        animation-duration: 3s;
+        animation-name: winningsquare;
+    }
+}
+
+@keyframes winningsquare {       
+    50% {
+        @include breakpoint(small) {
+            font-size: $default-symbol-size-small * 1.25;
+
+        }
+        @include breakpoint(large) {
+            font-size: $default-symbol-size * 1.25;
+        }
     }
 }
 
 p {
+    $default-font-size: 1rem;
+    @include breakpoint(small) {
+        font-size: $default-font-size * 2.5;
+    }
+    
+    @include breakpoint(large) {
+        font-size: $default-font-size;
+    }
     color: slategray;
-    font-size: .95em;
+}
+
+.button.large {
+    @include breakpoint(small) {
+        font-size: map-get($map: $button-sizes, $key: large) * 2.75;
+        height: 200px;
+    }
+    @include breakpoint(large) {
+        font-size: map-get($map: $button-sizes, $key: large);
+        height: inherit;
+    }
 }
