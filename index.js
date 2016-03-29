@@ -484,7 +484,7 @@
             if (isInProgess) {
                 restoreBoard();
             }
-            
+
             view.onSquareHover(model.getPlayer);
 
             view.onSquareClick(takeTurn);

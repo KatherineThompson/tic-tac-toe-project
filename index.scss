@@ -33,6 +33,10 @@ $header-sizes: (
 $default-symbol-size: 100px;
 $default-symbol-size-small: $default-symbol-size * 1.5;
 
+body {
+    min-width: 500px;
+}
+
 #board {
     
     $outer-border-width: 2px;
@@ -167,4 +171,20 @@ p {
         font-size: map-get($map: $button-sizes, $key: large);
         height: inherit;
     }
+}
+
+.reset {
+    @include breakpoint(small) {
+        padding-right: 5px !important;
+    }
+}
+
+.lucky {
+    @include breakpoint(small) {
+        padding-left: 5px !important;
+    }
+}
+
+.centered {
+    text-align: center;
 }
