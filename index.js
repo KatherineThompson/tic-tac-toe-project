@@ -8,7 +8,7 @@
     $(function() {
         controller.init(view, model);
     });
-
+    
     /**
      * All DOM manipulation happens here.
      * Adding new elements, listening for events,
