@@ -108,7 +108,7 @@
             $("#board .row div").hover(function(event) {
                 const isPlayerOne = callback();
                 const $hoveredSquare = $(event.target);
-                if ($hoveredSquare.hasClass("x") || $hoveredSquare.hasClass("o")){
+                if ($hoveredSquare.hasClass("x") || $hoveredSquare.hasClass("o") || $hoveredSquare.hasClass("game-over")){
                     return;
                 }
                 if (isPlayerOne) {
