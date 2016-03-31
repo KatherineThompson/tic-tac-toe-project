@@ -87,14 +87,14 @@ body {
 }
 
 @mixin player-symbol-classes($name, $color, $content, $bolded: false) {
-    @mixin player-symbol($color, $content) {
+    @mixin player-symbol() {
         color: $color;
         &::after {
             content: $content;
         }
     }
 
-    @mixin player-symbol-hover($color, $content) {
+    @mixin player-symbol-hover() {
         @include player-symbol($color, $content);
         opacity: 0.5;
         cursor: pointer;
@@ -126,11 +126,11 @@ body {
         background-color: #3adb76;
         opacity: .75;
         animation-duration: 3s;
-        animation-name: winningsquare;
+        animation-name: winning-square;
     }
 }
 
-@keyframes winningsquare {       
+@keyframes winning-square {       
     50% {
         @include breakpoint(small) {
             font-size: $default-symbol-size-small * 1.25;
