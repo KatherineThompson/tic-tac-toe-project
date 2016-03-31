@@ -88,27 +88,25 @@ body {
 
 @mixin player-symbol-classes($name, $color, $content, $bolded: false) {
     @mixin player-symbol() {
+        cursor: default;
+        -ms-user-select: none;
         color: $color;
         &::after {
             content: $content;
         }
     }
-
-    @mixin player-symbol-hover() {
-        @include player-symbol($color, $content);
-        opacity: 0.5;
-        cursor: pointer;
-    }    
     
     .#{$name} {
-        @include player-symbol($color, $content);
+        @include player-symbol();
         @if $bolded {
             font-weight: bold;
         }
     }
     
     .#{$name}-hover {
-        @include player-symbol-hover($color, $content);
+        @include player-symbol();
+        opacity: 0.5;
+        cursor: pointer;
         @if $bolded {
             font-weight: bold;
         }
