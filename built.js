@@ -17,7 +17,7 @@
         var isFrozen = false;
         function onSquareClick(callback) {
             $("#board .row div").on("click", function (event) {
-                var $clickedSquare = $(event.target);
+                var $clickedSquare = $(event.currentTarget);
                 if (isFrozen || $clickedSquare.hasClass("x") || $clickedSquare.hasClass("o")) {
                     return;
                 }
@@ -30,16 +30,18 @@
 
         function changePlayerMessage(isPlayerOne, message) {
             if (isPlayerOne) {
-                $("#player-num").text("1");
+                $("#player-num").removeClass("o-character").addClass("x-character");
             } else {
-                $("#player-num").text("2");
+                $("#player-num").removeClass("x-character").addClass("o-character");
             }
 
             $("#message").text(message);
         }
 
         function setTieMessage() {
-            $("#player-num").text("1 & Player 2");
+            $("#player-num").removeClass("o-character").addClass("x-character");
+            $("#ampersand").show();
+            $("#second-player-num").addClass("o-character").show();
             $("#message").text("It's a tie!");
         }
 
@@ -68,6 +70,7 @@
             });
             $("#board .row div").removeClass("game-over");
             $("#lucky-button").removeAttr("disabled");
+            $("#ampersand, #second-player-num").hide();
         }
 
         function drawBoard(board) {
@@ -101,6 +104,7 @@
         function onSquareHover(callback) {
             $("#board .row div").hover(function (event) {
                 var isPlayerOne = callback();
+
                 var $hoveredSquare = $(event.target);
                 if ($hoveredSquare.hasClass("x") || $hoveredSquare.hasClass("o") || $hoveredSquare.hasClass("game-over")) {
                     return;

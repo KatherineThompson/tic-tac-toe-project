@@ -14,7 +14,7 @@
         let isFrozen = false;
         function onSquareClick(callback) {
             $("#board .row div").on("click", function(event) {
-                const $clickedSquare = $(event.target);
+                const $clickedSquare = $(event.currentTarget);
                 if (isFrozen || $clickedSquare.hasClass("x") || $clickedSquare.hasClass("o")) {
                     return;
                 }
@@ -27,21 +27,23 @@
         
         function changePlayerMessage(isPlayerOne, message) {
             if (isPlayerOne) {
-                $("#player-num").text("1");
+                $("#player-num").removeClass("o-character").addClass("x-character");
             } else {
-                $("#player-num").text("2");
+                $("#player-num").removeClass("x-character").addClass("o-character");
             }
             
             $("#message").text(message);
         }
         
         function setTieMessage() {
-            $("#player-num").text("1 & Player 2");
+            $("#player-num").removeClass("o-character").addClass("x-character");
+            $("#ampersand").show();
+            $("#second-player-num").addClass("o-character").show();
             $("#message").text("It's a tie!");
         }
         
         function addMark(isPlayerOne, row, column) {
-            const $square = $("#board div").filter("[row=" + row + "]").filter("[column=" + column +"]");            
+            const $square = $("#board div").filter(`[row=${row}]`).filter(`[column=${column}]`);            
             const className = isPlayerOne ? "x" : "o";
             $square.addClass(className);
         }
@@ -65,6 +67,7 @@
             });
             $("#board .row div").removeClass("game-over");
             $("#lucky-button").removeAttr("disabled");
+            $("#ampersand, #second-player-num").hide();
         }
         
         function drawBoard(board) {
@@ -80,8 +83,8 @@
         function addWinEffects(winningSquares) {
             winningSquares.forEach(function(square) {
                 const $square = $("#board div")
-                    .filter("[row=" + square.row + "]")
-                    .filter("[column=" + square.column +"]");
+                    .filter(`[row=${square.row}]`)
+                    .filter(`[column=${square.column}]`);
                 $square.addClass("winning-square");
             });
             
@@ -101,8 +104,13 @@
         function onSquareHover(callback) {  
             $("#board .row div").hover(function(event) {
                 const isPlayerOne = callback();
+
                 const $hoveredSquare = $(event.target);
-                if ($hoveredSquare.hasClass("x") || $hoveredSquare.hasClass("o") || $hoveredSquare.hasClass("game-over")){
+                if (
+                    $hoveredSquare.hasClass("x") ||
+                    $hoveredSquare.hasClass("o") ||
+                    $hoveredSquare.hasClass("game-over")
+                ){
                     return;
                 }
                 if (isPlayerOne) {
