@@ -30,16 +30,18 @@
 
         function changePlayerMessage(isPlayerOne, message) {
             if (isPlayerOne) {
-                $("#player-num").text("1");
+                $("#player-num").removeClass("o-character").addClass("x-character");
             } else {
-                $("#player-num").text("2");
+                $("#player-num").removeClass("x-character").addClass("o-character");
             }
 
             $("#message").text(message);
         }
 
         function setTieMessage() {
-            $("#player-num").text("1 & Player 2");
+            $("#player-num").removeClass("o-character").addClass("x-character");
+            $("#ampersand").show();
+            $("#second-player-num").addClass("o-character").show();
             $("#message").text("It's a tie!");
         }
 
@@ -68,6 +70,8 @@
             });
             $("#board .row div").removeClass("game-over");
             $("#lucky-button").removeAttr("disabled");
+            $("#ampersand").hide();
+            $("#second-player-num").hide();
         }
 
         function drawBoard(board) {

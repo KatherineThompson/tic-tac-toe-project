@@ -5634,3 +5634,6 @@ p {
 
 .centered {
   text-align: center; }
+
+#second-player-num, #ampersand {
+  display: none; }

@@ -15,6 +15,7 @@
     "start": "static -a 0.0.0.0",
     "test": "jshint -c .jshintrc index.js && npm run build",
     "build": "babel index.js --out-file built.js && node-sass --include-path node_modules/foundation-sites/scss --include-path node_modules/font-awesome/scss index.scss built.css",
-    "build-styles-watch": "node-sass --watch --include-path node_modules/foundation-sites/scss --include-path node_modules/font-awesome/scss index.scss built.css"
+    "build-styles-watch": "node-sass --watch --include-path node_modules/foundation-sites/scss --include-path node_modules/font-awesome/scss index.scss built.css",
+    "build-js-watch": "babel -w index.js --out-file built.js"
   }
 }
