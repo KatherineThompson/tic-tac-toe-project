@@ -55,7 +55,12 @@
         }
         
         function onLuckyButtonClick(callback) {
-            $("#lucky-button").click(callback);
+            $("#lucky-button").click(function() {
+                if (isFrozen === true) {
+                    return;
+                }
+                callback();
+            });
         }
         
         function resetBoard() {
