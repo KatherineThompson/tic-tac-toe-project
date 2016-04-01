@@ -70,8 +70,7 @@
             });
             $("#board .row div").removeClass("game-over");
             $("#lucky-button").removeAttr("disabled");
-            $("#ampersand").hide();
-            $("#second-player-num").hide();
+            $("#ampersand, #second-player-num").hide();
         }
 
         function drawBoard(board) {
