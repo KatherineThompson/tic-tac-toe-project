@@ -9,15 +9,8 @@
         controller.init(view, model);
     });
     
-    /**
-     * All DOM manipulation happens here.
-     * Adding new elements, listening for events,
-     * removing elements, etc. No logic that has
-     * knowledge of how the DOM is laid out (eg any
-     * DOM selectors) should be outside of the view.
-     */
     function createView() {
-        // Declare some functions
+        
         let isFrozen = false;
         function onSquareClick(callback) {
             $("#board .row div").on("click", function(event) {
@@ -121,32 +114,24 @@
                 $hoveredSquare.removeClass("x-hover").removeClass("o-hover");
             });
         }
-        // Return those functions
-        return {onSquareClick: onSquareClick,
-                changePlayerMessage: changePlayerMessage,
-                addMark: addMark,
-                freezeBoard: freezeBoard,
-                setTieMessage: setTieMessage,
-                onResetButtonClick: onResetButtonClick,
-                resetBoard: resetBoard,
-                drawBoard: drawBoard,
-                addWinEffects: addWinEffects,
-                updateTallies: updateTallies,
-                onLuckyButtonClick: onLuckyButtonClick,
-                addEndState: addEndState,
-                onSquareHover: onSquareHover
+        return {onSquareClick,
+                changePlayerMessage,
+                addMark,
+                freezeBoard,
+                setTieMessage,
+                onResetButtonClick,
+                resetBoard,
+                drawBoard,
+                addWinEffects,
+                updateTallies,
+                onLuckyButtonClick,
+                addEndState,
+                onSquareHover
         };
     }
 
-    /**
-     * The game state is maintained here.
-     * If you need to save or load the game state
-     * from some external source, this is the place
-     * to do it. The model also defines the initial
-     * game state.
-     */
+
     function createModel() {
-        // Declare some functions
         
         const sideLength = 3;
         
@@ -459,24 +444,22 @@
             }
         }
 
-        // Return those functions
-        return {changePlayer: changePlayer,
-                getPlayer: getPlayer,
-                checkWin: checkWin,
-                updateBoard: updateBoard,
-                checkTie: checkTie,
-                resetGame: resetGame,
-                loadGame: loadGame,
-                getBoard: getBoard,
-                getLastRow: getLastRow,
-                getLastColumn: getLastColumn,
-                getTallies: getTallies,
-                getBestSpace: getBestSpace
+        return {changePlayer,
+                getPlayer,
+                checkWin,
+                updateBoard,
+                checkTie,
+                resetGame,
+                loadGame,
+                getBoard,
+                getLastRow,
+                getLastColumn,
+                getTallies,
+                getBestSpace
               };
     }
     
     function createController() {
-        // Bootstrap the app.
         function init(view, model) {
 
             const isInProgess = model.loadGame();
@@ -523,7 +506,6 @@
             }
         }
 
-        // Feel free to declare any other helper functions you may need.
         function updateViewIfGameOver(player, row, column, shouldUpdateTallies) {
             const winningSquares = model.checkWin(player, row, column, shouldUpdateTallies);
             
@@ -551,8 +533,5 @@
         
         return {init};
     }
-
-    // Create a view, model, and controller,
-    // and wire them up to make the app work.
 
 })(window.$);

@@ -3510,7 +3510,7 @@ body {
   color: #ffae00;
   font-weight: bold; }
   .o::after {
-    content: "⭕"; }
+    content: "⚪"; }
 
 .o-hover {
   cursor: default;
@@ -3520,7 +3520,7 @@ body {
   cursor: pointer;
   font-weight: bold; }
   .o-hover::after {
-    content: "⭕"; }
+    content: "⚪"; }
 
 .game-over {
   background-color: #dddddd;

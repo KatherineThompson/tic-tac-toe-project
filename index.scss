@@ -115,7 +115,7 @@ body {
 
 @include player-symbol-classes("x", #8545D5, "✖");
 
-@include player-symbol-classes("o", #ffae00, "⭕", true);
+@include player-symbol-classes("o", #ffae00, "⚪", true);
 
 .game-over {
     background-color: #dddddd;
