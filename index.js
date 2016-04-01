@@ -41,7 +41,7 @@
         }
         
         function addMark(isPlayerOne, row, column) {
-            const $square = $("#board div").filter("[row=" + row + "]").filter("[column=" + column +"]");            
+            const $square = $("#board div").filter(`[row=${row}]`).filter(`[column=${column}]`);            
             const className = isPlayerOne ? "x" : "o";
             $square.addClass(className);
         }
@@ -80,8 +80,8 @@
         function addWinEffects(winningSquares) {
             winningSquares.forEach(function(square) {
                 const $square = $("#board div")
-                    .filter("[row=" + square.row + "]")
-                    .filter("[column=" + square.column +"]");
+                    .filter(`[row=${square.row}]`)
+                    .filter(`[column=${square.column}]`);
                 $square.addClass("winning-square");
             });
             

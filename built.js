@@ -101,6 +101,7 @@
         function onSquareHover(callback) {
             $("#board .row div").hover(function (event) {
                 var isPlayerOne = callback();
+
                 var $hoveredSquare = $(event.target);
                 if ($hoveredSquare.hasClass("x") || $hoveredSquare.hasClass("o") || $hoveredSquare.hasClass("game-over")) {
                     return;
