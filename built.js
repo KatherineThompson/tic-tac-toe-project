@@ -12,15 +12,8 @@
         controller.init(view, model);
     });
 
-    /**
-     * All DOM manipulation happens here.
-     * Adding new elements, listening for events,
-     * removing elements, etc. No logic that has
-     * knowledge of how the DOM is laid out (eg any
-     * DOM selectors) should be outside of the view.
-     */
     function createView() {
-        // Declare some functions
+
         var isFrozen = false;
         function onSquareClick(callback) {
             $("#board .row div").on("click", function (event) {
@@ -89,15 +82,7 @@
         function addWinEffects(winningSquares) {
             winningSquares.forEach(function (square) {
                 var $square = $("#board div").filter("[row=" + square.row + "]").filter("[column=" + square.column + "]");
-                $square.addClass("winning-square").animate({
-                    "font-size": "125px",
-                    "line-height": "150%"
-                }, 1000, function () {
-                    $square.animate({
-                        "font-size": "100px",
-                        "line-height": "200%"
-                    }, 1000);
-                });
+                $square.addClass("winning-square");
             });
         }
 
@@ -116,7 +101,7 @@
             $("#board .row div").hover(function (event) {
                 var isPlayerOne = callback();
                 var $hoveredSquare = $(event.target);
-                if ($hoveredSquare.hasClass("x") || $hoveredSquare.hasClass("o")) {
+                if ($hoveredSquare.hasClass("x") || $hoveredSquare.hasClass("o") || $hoveredSquare.hasClass("game-over")) {
                     return;
                 }
                 if (isPlayerOne) {
@@ -129,7 +114,6 @@
                 $hoveredSquare.removeClass("x-hover").removeClass("o-hover");
             });
         }
-        // Return those functions
         return { onSquareClick: onSquareClick,
             changePlayerMessage: changePlayerMessage,
             addMark: addMark,
@@ -146,15 +130,7 @@
         };
     }
 
-    /**
-     * The game state is maintained here.
-     * If you need to save or load the game state
-     * from some external source, this is the place
-     * to do it. The model also defines the initial
-     * game state.
-     */
     function createModel() {
-        // Declare some functions
 
         var sideLength = 3;
 
@@ -473,7 +449,6 @@
             }
         }
 
-        // Return those functions
         return { changePlayer: changePlayer,
             getPlayer: getPlayer,
             checkWin: checkWin,
@@ -490,7 +465,6 @@
     }
 
     function createController() {
-        // Bootstrap the app.
         function init(view, model) {
 
             var isInProgess = model.loadGame();
@@ -537,7 +511,6 @@
             }
         }
 
-        // Feel free to declare any other helper functions you may need.
         function updateViewIfGameOver(player, row, column, shouldUpdateTallies) {
             var winningSquares = model.checkWin(player, row, column, shouldUpdateTallies);
 
@@ -565,7 +538,4 @@
 
         return { init: init };
     }
-
-    // Create a view, model, and controller,
-    // and wire them up to make the app work.
 })(window.$);
