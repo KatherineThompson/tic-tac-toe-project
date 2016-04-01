@@ -4,6 +4,7 @@ A simple tic-tac-toe web app
 ## Technologies Used
 * CSS
     * CSS3 animations
+    * [Font Awesome](http://fortawesome.github.io/Font-Awesome/)
     * [Foundation](http://foundation.zurb.com/)    
     * [Sass](http://sass-lang.com/)
     
@@ -51,4 +52,5 @@ and enjoyed being able to do more complex things less tediously.
 * Saving games so they can be used across devices
 * Supporting browsers without local storage
 * Hover state may look awkward on some touch devices
-* Use SVGs to render the Xs, Os, and potentially tally marks to keep track of games won or tied
+* Potentially add tally marks to keep track of games won or tied
+* Winning animation looks weird on firefox

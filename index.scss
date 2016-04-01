@@ -1,5 +1,8 @@
 @import "foundation";
 
+$fa-font-path: "./fonts";
+@import "font-awesome";
+
 $breakpoints: map-merge($breakpoints, (large: 1025px));
 
 $header-sizes: (
@@ -86,36 +89,34 @@ body {
     }    
 }
 
-@mixin player-symbol-classes($name, $color, $content, $bolded: false) {
+@mixin player-symbol-classes($name, $color, $content) {
     @mixin player-symbol() {
         cursor: default;
         -ms-user-select: none;
-        color: $color;
-        &::after {
-            content: $content;
+        span {
+            @extend .#{$name}-character;
         }
     }
     
     .#{$name} {
         @include player-symbol();
-        @if $bolded {
-            font-weight: bold;
-        }
     }
     
     .#{$name}-hover {
         @include player-symbol();
         opacity: 0.5;
         cursor: pointer;
-        @if $bolded {
-            font-weight: bold;
-        }
+    }
+    .#{$name}-character {
+        color: $color;
+        @extend .fa;
+        @extend .#{$content};
     }
 }
 
-@include player-symbol-classes("x", #8545D5, "✖");
+@include player-symbol-classes("x", #8545D5, "fa-times");
 
-@include player-symbol-classes("o", #ffae00, "⚪", true);
+@include player-symbol-classes("o", #ffae00, "fa-circle-o");
 
 .game-over {
     background-color: #dddddd;
@@ -177,4 +178,8 @@ p {
 
 .centered {
     text-align: center;
+}
+
+#second-player-num, #ampersand {
+    display: none;
 }
