@@ -94,8 +94,9 @@ body {
         cursor: default;
         -ms-user-select: none;
         color: $color;
-        &::after {
-            content: $content;
+        span {
+            @extend .fa;
+            @extend .fa-times;
         }
     }
     

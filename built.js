@@ -17,7 +17,7 @@
         var isFrozen = false;
         function onSquareClick(callback) {
             $("#board .row div").on("click", function (event) {
-                var $clickedSquare = $(event.target);
+                var $clickedSquare = $(event.currentTarget);
                 if (isFrozen || $clickedSquare.hasClass("x") || $clickedSquare.hasClass("o")) {
                     return;
                 }

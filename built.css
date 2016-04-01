@@ -18,7 +18,7 @@
   font-weight: normal;
   font-style: normal; }
 
-.fa {
+.fa, .x span, .x-hover span, .o span, .o-hover span {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
@@ -75,10 +75,10 @@
 .fa-pull-right {
   float: right; }
 
-.fa.fa-pull-left {
+.fa.fa-pull-left, .x span.fa-pull-left, .x-hover span.fa-pull-left, .o span.fa-pull-left, .o-hover span.fa-pull-left {
   margin-right: .3em; }
 
-.fa.fa-pull-right {
+.fa.fa-pull-right, .x span.fa-pull-right, .x-hover span.fa-pull-right, .o span.fa-pull-right, .o-hover span.fa-pull-right {
   margin-left: .3em; }
 
 /* Deprecated as of 4.4.0 */
@@ -88,10 +88,10 @@
 .pull-left {
   float: left; }
 
-.fa.pull-left {
+.fa.pull-left, .x span.pull-left, .x-hover span.pull-left, .o span.pull-left, .o-hover span.pull-left {
   margin-right: .3em; }
 
-.fa.pull-right {
+.fa.pull-right, .x span.pull-right, .x-hover span.pull-right, .o span.pull-right, .o-hover span.pull-right {
   margin-left: .3em; }
 
 .fa-spin {
@@ -221,7 +221,11 @@
 
 .fa-remove:before,
 .fa-close:before,
-.fa-times:before {
+.fa-times:before,
+.x span:before,
+.x-hover span:before,
+.o span:before,
+.o-hover span:before {
   content: ""; }
 
 .fa-search-plus:before {
@@ -5571,8 +5575,6 @@ body {
   cursor: default;
   -ms-user-select: none;
   color: #8545D5; }
-  .x::after {
-    content: "✖"; }
 
 .x-hover {
   cursor: default;
@@ -5580,15 +5582,11 @@ body {
   color: #8545D5;
   opacity: 0.5;
   cursor: pointer; }
-  .x-hover::after {
-    content: "✖"; }
 
 .o {
   cursor: default;
   -ms-user-select: none;
   color: #ffae00; }
-  .o::after {
-    content: "⚪"; }
 
 .o-hover {
   cursor: default;
@@ -5596,8 +5594,6 @@ body {
   color: #ffae00;
   opacity: 0.5;
   cursor: pointer; }
-  .o-hover::after {
-    content: "⚪"; }
 
 .game-over {
   background-color: #dddddd;
