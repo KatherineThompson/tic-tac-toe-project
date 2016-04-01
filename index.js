@@ -14,7 +14,7 @@
         let isFrozen = false;
         function onSquareClick(callback) {
             $("#board .row div").on("click", function(event) {
-                const $clickedSquare = $(event.target);
+                const $clickedSquare = $(event.target).children();
                 if (isFrozen || $clickedSquare.hasClass("x") || $clickedSquare.hasClass("o")) {
                     return;
                 }
@@ -41,7 +41,7 @@
         }
         
         function addMark(isPlayerOne, row, column) {
-            const $square = $("#board div").filter("[row=" + row + "]").filter("[column=" + column +"]");            
+            const $square = $("#board div").filter(`[row=${row}]`).filter(`[column=${column}]`).children();            
             const className = isPlayerOne ? "x" : "o";
             $square.addClass(className);
         }
@@ -61,7 +61,7 @@
         function resetBoard() {
             isFrozen = false;
             $("#board div").filter("[row]").filter("[column]").each(function(index, square) {
-                $(square).removeClass("x").removeClass("o").removeClass("winning-square");
+                $(square).children().removeClass("x").removeClass("o").removeClass("winning-square");
             });
             $("#board .row div").removeClass("game-over");
             $("#lucky-button").removeAttr("disabled");
@@ -80,8 +80,8 @@
         function addWinEffects(winningSquares) {
             winningSquares.forEach(function(square) {
                 const $square = $("#board div")
-                    .filter("[row=" + square.row + "]")
-                    .filter("[column=" + square.column +"]");
+                    .filter(`[row=${square.row}]`)
+                    .filter(`[column=${square.column}]`);
                 $square.addClass("winning-square");
             });
             
@@ -101,7 +101,7 @@
         function onSquareHover(callback) {  
             $("#board .row div").hover(function(event) {
                 const isPlayerOne = callback();
-                const $hoveredSquare = $(event.target);
+                const $hoveredSquare = $(event.target).children();
                 if ($hoveredSquare.hasClass("x") || $hoveredSquare.hasClass("o") || $hoveredSquare.hasClass("game-over")){
                     return;
                 }
@@ -111,7 +111,7 @@
                     $hoveredSquare.addClass("o-hover");
                 }
             }, function(event) {
-                const $hoveredSquare = $(event.target);
+                const $hoveredSquare = $(event.target).children();
                 $hoveredSquare.removeClass("x-hover").removeClass("o-hover");
             });
         }
