@@ -55,12 +55,7 @@
         }
         
         function onLuckyButtonClick(callback) {
-            $("#lucky-button").click(function() {
-                if (isFrozen === true) {
-                    return;
-                }
-                callback();
-            });
+            $("#lucky-button").click(callback);
         }
         
         function resetBoard() {
@@ -69,6 +64,7 @@
                 $(square).removeClass("x").removeClass("o").removeClass("winning-square");
             });
             $("#board .row div").removeClass("game-over");
+            $("#lucky-button").removeAttr("disabled");
         }
         
         function drawBoard(board) {
@@ -93,7 +89,7 @@
         
         function addEndState() {
             $("#board .row div").addClass("game-over");
-            $("#lucky-button").attr("disbled", "true");
+            $("#lucky-button").attr("disabled", "disabled");
         }
         
         function updateTallies(currentTallies) {
