@@ -5586,8 +5586,7 @@ body {
 .o {
   cursor: default;
   -ms-user-select: none;
-  color: #ffae00;
-  font-weight: bold; }
+  color: #ffae00; }
   .o::after {
     content: "⚪"; }
 
@@ -5596,8 +5595,7 @@ body {
   -ms-user-select: none;
   color: #ffae00;
   opacity: 0.5;
-  cursor: pointer;
-  font-weight: bold; }
+  cursor: pointer; }
   .o-hover::after {
     content: "⚪"; }
 

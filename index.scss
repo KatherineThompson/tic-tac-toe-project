@@ -101,18 +101,12 @@ body {
     
     .#{$name} {
         @include player-symbol();
-        @if $bolded {
-            font-weight: bold;
-        }
     }
     
     .#{$name}-hover {
         @include player-symbol();
         opacity: 0.5;
         cursor: pointer;
-        @if $bolded {
-            font-weight: bold;
-        }
     }
 }
 
