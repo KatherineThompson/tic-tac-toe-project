@@ -14,7 +14,7 @@
         let isFrozen = false;
         function onSquareClick(callback) {
             $("#board .row div").on("click", function(event) {
-                const $clickedSquare = $(event.target).children();
+                const $clickedSquare = $(event.target);
                 if (isFrozen || $clickedSquare.hasClass("x") || $clickedSquare.hasClass("o")) {
                     return;
                 }
@@ -41,7 +41,7 @@
         }
         
         function addMark(isPlayerOne, row, column) {
-            const $square = $("#board div").filter(`[row=${row}]`).filter(`[column=${column}]`).children();            
+            const $square = $("#board div").filter("[row=" + row + "]").filter("[column=" + column +"]");            
             const className = isPlayerOne ? "x" : "o";
             $square.addClass(className);
         }
@@ -61,7 +61,7 @@
         function resetBoard() {
             isFrozen = false;
             $("#board div").filter("[row]").filter("[column]").each(function(index, square) {
-                $(square).children().removeClass("x").removeClass("o").removeClass("winning-square");
+                $(square).removeClass("x").removeClass("o").removeClass("winning-square");
             });
             $("#board .row div").removeClass("game-over");
             $("#lucky-button").removeAttr("disabled");
@@ -80,8 +80,8 @@
         function addWinEffects(winningSquares) {
             winningSquares.forEach(function(square) {
                 const $square = $("#board div")
-                    .filter(`[row=${square.row}]`)
-                    .filter(`[column=${square.column}]`);
+                    .filter("[row=" + square.row + "]")
+                    .filter("[column=" + square.column +"]");
                 $square.addClass("winning-square");
             });
             
@@ -101,7 +101,8 @@
         function onSquareHover(callback) {  
             $("#board .row div").hover(function(event) {
                 const isPlayerOne = callback();
-                const $hoveredSquare = $(event.target).children();
+
+                const $hoveredSquare = $(event.target);
                 if (
                     $hoveredSquare.hasClass("x") ||
                     $hoveredSquare.hasClass("o") ||
@@ -115,7 +116,7 @@
                     $hoveredSquare.addClass("o-hover");
                 }
             }, function(event) {
-                const $hoveredSquare = $(event.target).children();
+                const $hoveredSquare = $(event.target);
                 $hoveredSquare.removeClass("x-hover").removeClass("o-hover");
             });
         }
