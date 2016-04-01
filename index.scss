@@ -89,14 +89,12 @@ body {
     }    
 }
 
-@mixin player-symbol-classes($name, $color, $content, $bolded: false) {
+@mixin player-symbol-classes($name, $color, $content) {
     @mixin player-symbol() {
         cursor: default;
         -ms-user-select: none;
-        color: $color;
         span {
-            @extend .fa;
-            @extend .fa-times;
+            @extend .#{$name}-character;
         }
     }
     
@@ -109,11 +107,16 @@ body {
         opacity: 0.5;
         cursor: pointer;
     }
+    .#{$name}-character {
+        color: $color;
+        @extend .fa;
+        @extend .#{$content};
+    }
 }
 
-@include player-symbol-classes("x", #8545D5, "✖");
+@include player-symbol-classes("x", #8545D5, "fa-times");
 
-@include player-symbol-classes("o", #ffae00, "⚪", true);
+@include player-symbol-classes("o", #ffae00, "fa-circle-o");
 
 .game-over {
     background-color: #dddddd;
