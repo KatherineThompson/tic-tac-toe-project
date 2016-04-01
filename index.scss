@@ -1,5 +1,8 @@
 @import "foundation";
 
+$fa-font-path: "./fonts";
+@import "font-awesome";
+
 $breakpoints: map-merge($breakpoints, (large: 1025px));
 
 $header-sizes: (
