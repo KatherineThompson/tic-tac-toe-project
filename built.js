@@ -474,6 +474,7 @@
 
             var isInProgess = model.loadGame();
             view.drawBoard(model.getBoard());
+            view.changePlayerMessage(model.getPlayer(), "Pick a square");
             if (isInProgess) {
                 restoreBoard();
             }
